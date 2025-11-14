@@ -1,0 +1,75 @@
+<div class="container">
+  <header>
+    <img src="ngx-atomic-bindings.svg" alt="ngx-atomic-bindings logo" class="logo" />
+    <h1>{{ title() }}</h1>
+    <p>Dynamic component rendering with type-safe bindings using Angular signals</p>
+  </header>
+
+  <main>
+    <section class="demo-section">
+      <h2>Example 1: Mixed Dynamic & Fixed Props</h2>
+      <p>Combines dynamic props (event handler) with fixed props (variant). Click count: {{ clickCount() }}</p>
+      <div class="demo-result">
+        <ng-container
+          [atomicBindingsProps]="dynamicButtonProps()"
+          [atomicBindings]="DemoButtonComponent"
+          [atomicBindingsFixed]="{ variant: 'success' }">
+        </ng-container>
+      </div>
+      <pre class="code-snippet"><code>// Mix dynamic and fixed props:
+&lt;ng-container
+  [atomicBindingsProps]="dynamicButtonProps()"
+  [atomicBindings]="DemoButtonComponent"
+  [atomicBindingsFixed]="&#123; variant: 'success' &#125;"&gt;
+&lt;/ng-container&gt;
+
+clickCount = signal(0);
+
+dynamicButtonProps = signal(&#123;
+  label: `Button`,
+  clicked: () => &#123;
+    this.clickCount.update(c => c + 1);
+  &#125;,
+&#125;);</code></pre>
+    </section>
+
+    <section class="demo-section">
+      <h2>Example 2: Atomic Design Pattern (Molecular + Atomic)</h2>
+      <p>The card (molecular) uses the button (atomic) internally through the directive. This demonstrates how molecular components can expose atomic component props dynamically!</p>
+      <div class="demo-result">
+        <ng-container
+          [atomicBindingsProps]="cardProps()"
+          [atomicBindings]="DemoCardComponent">
+        </ng-container>
+      </div>
+      <pre class="code-snippet"><code>// Card component (Molecular) template:
+&lt;div class="card"&gt;
+  ...
+  &lt;div class="card-footer"&gt;
+    &lt;ng-container
+      [atomicBindings]="DemoButtonComponent"
+      [atomicBindingsProps]="actionButtonProps()"&gt;
+    &lt;/ng-container&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+// Card accepts button props dynamically:
+actionButtonProps = input&lt;ComponentProps&lt;DemoButtonComponent&gt;&gt;();
+
+// Usage:
+cardProps = signal(&#123;
+  title: 'Dynamic Card (Molecular)',
+  content: '...',
+  actionButtonProps: &#123;
+    label: 'Learn More',
+    variant: 'primary',
+    clicked: () => alert('Clicked!'),
+  &#125;,
+&#125;);</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>Check the console to see output events in action!</p>
+  </footer>
+</div>

@@ -1,0 +1,31 @@
+{
+  "name": "ngx-atomic-bindings",
+  "version": "1.1.0",
+  "description": "Angular directive that enables molecular components to transparently expose and forward the properties of their underlying atomic components.",
+  "keywords": [
+    "angular",
+    "directive",
+    "dynamic-components",
+    "signals",
+    "typescript",
+    "type-safe",
+    "bindings",
+    "atomic-design",
+    "molecular",
+    "atomic",
+    "bindings"
+  ],
+  "author": "Etienne PASTEUR <me@etiennepasteur.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EtiennePasteur/ngx-atomic-bindings.git"
+  },
+  "peerDependencies": {
+    "@angular/core": ">=18"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

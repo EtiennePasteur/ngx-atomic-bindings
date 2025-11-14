@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Gradients for 3D orbital rings -->
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6c3483;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9b59b6;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1f618d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3498db;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="cyanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1abc9c;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#117864;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1abc9c;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ecc71;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e8449;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2ecc71;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="yellowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f1c40f;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#b9770e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1c40f;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e67e22;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#a04000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e67e22;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow filter for 3D depth -->
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Highlight filter for glossy effect -->
+    <filter id="highlight">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur"/>
+      <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.5" 
+                          specularExponent="10" lighting-color="#ffffff" result="spec">
+        <fePointLight x="-100" y="-100" z="200"/>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceGraphic" operator="in" result="specOut"/>
+      <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" 
+                   k1="0" k2="1" k3="1" k4="0"/>
+    </filter>
+  </defs>
+  
+  <!-- Orbital rings (6 ellipses at different angles) with 3D effect -->
+  
+  <!-- Ring 1 - Purple (top) -->
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="url(#purpleGradient)" stroke-width="14"
+    transform="rotate(-15 200 200)" filter="url(#shadow)" opacity="0.9"/>
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="#d7bde2" stroke-width="3"
+    transform="rotate(-15 200 200)" opacity="0.6"/>
+  
+  <!-- Ring 2 - Blue (top right) -->
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="url(#blueGradient)" stroke-width="14"
+    transform="rotate(45 200 200)" filter="url(#shadow)" opacity="0.9"/>
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="#aed6f1" stroke-width="3"
+    transform="rotate(45 200 200)" opacity="0.6"/>
+  
+  <!-- Ring 3 - Cyan (right) -->
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="url(#cyanGradient)" stroke-width="14"
+    transform="rotate(105 200 200)" filter="url(#shadow)" opacity="0.9"/>
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="#a3e4d7" stroke-width="3"
+    transform="rotate(105 200 200)" opacity="0.6"/>
+  
+  <!-- Ring 4 - Green (bottom right) -->
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="url(#greenGradient)" stroke-width="14"
+    transform="rotate(165 200 200)" filter="url(#shadow)" opacity="0.9"/>
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="#a9dfbf" stroke-width="3"
+    transform="rotate(165 200 200)" opacity="0.6"/>
+  
+  <!-- Ring 5 - Yellow (bottom) -->
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="url(#yellowGradient)" stroke-width="14"
+    transform="rotate(-135 200 200)" filter="url(#shadow)" opacity="0.9"/>
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="#f9e79f" stroke-width="3"
+    transform="rotate(-135 200 200)" opacity="0.6"/>
+  
+  <!-- Ring 6 - Orange (left) -->
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="url(#orangeGradient)" stroke-width="14"
+    transform="rotate(-75 200 200)" filter="url(#shadow)" opacity="0.9"/>
+  <ellipse cx="200" cy="200" rx="145" ry="60" 
+    fill="none" stroke="#f5cba7" stroke-width="3"
+    transform="rotate(-75 200 200)" opacity="0.6"/>
+  
+  <!-- Angular Logo (centered and scaled) -->
+  <g transform="translate(200, 200) scale(0.75) translate(-125, -125)" filter="url(#shadow)">
+    <polygon points="125,30 125,30 125,30 31.9,63.2 46.1,186.3 125,230 125,230 125,230 203.9,186.3 218.1,63.2" fill="#DD0031"/>
+    <polygon points="125,30 125,52.2 125,52.1 125,153.4 125,153.4 125,230 125,230 203.9,186.3 218.1,63.2 125,30" fill="#C3002F"/>
+    <path d="M125,52.1L66.8,182.6h0h21.7h0l11.7-29.2h49.4l11.7,29.2h0h21.7h0L125,52.1L125,52.1L125,52.1L125,52.1   L125,52.1z M142,135.4H108l17-40.9L142,135.4z" fill="#FFFFFF"/>
+  </g>
+</svg>
