@@ -7,6 +7,15 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/ngx-atomic-bindings"><img src="https://img.shields.io/npm/v/ngx-atomic-bindings" alt="NPM Version" /></a>
   <a href="https://github.com/EtiennePasteur/ngx-atomic-bindings/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/ngx-atomic-bindings" alt="License" /></a>
+  <a href="https://github.com/EtiennePasteur/ngx-atomic-bindings/actions/workflows/test.yml"><img src="https://github.com/EtiennePasteur/ngx-atomic-bindings/actions/workflows/test.yml/badge.svg" alt="Build Status" /></a>
+  <a href="https://www.npmjs.com/package/ngx-atomic-bindings"><img src="https://img.shields.io/npm/dm/ngx-atomic-bindings" alt="NPM Downloads" /></a>
+</p>
+
+<p align="center">
+  <a href="https://bundlephobia.com/package/ngx-atomic-bindings"><img src="https://img.shields.io/bundlephobia/minzip/ngx-atomic-bindings" alt="Bundle Size" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.9+-blue" alt="TypeScript" /></a>
+  <a href="https://angular.io/"><img src="https://img.shields.io/badge/Angular-18+-red" alt="Angular" /></a>
+  <a href="https://github.com/EtiennePasteur/ngx-atomic-bindings/stargazers"><img src="https://img.shields.io/github/stars/EtiennePasteur/ngx-atomic-bindings" alt="GitHub Stars" /></a>
   <a href="https://etiennepasteur.github.io/ngx-atomic-bindings/"><img src="https://img.shields.io/badge/demo-live-blue" alt="Demo" /></a>
 </p>
 
