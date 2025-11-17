@@ -58,6 +58,7 @@ export type ComponentPropsExcluding<T, K extends keyof ComponentProps<T>> = Omit
 })
 export class AtomicBindingsDirective<T extends object> {
   private readonly viewContainerRef = inject(ViewContainerRef);
+  private componentRef: ComponentRef<T> | null = null;
 
   public atomicBindings = input.required<new (...args: any[]) => T>();
   public atomicBindingsProps = input<Partial<ComponentProps<T>>>();
@@ -72,24 +73,28 @@ export class AtomicBindingsDirective<T extends object> {
 
       const config = userConfig || fixedProps ? { ...(userConfig || {}), ...(fixedProps || {}) } : undefined;
       if (!config || !container) {
-        if (container?.length > 0) container.clear();
+        if (container?.length > 0) {
+          container.clear();
+          this.componentRef = null;
+        }
         return;
       }
 
-      const componentRef =
-        container.length > 0 ? (container.get(0) as unknown as ComponentRef<T>) : container.createComponent(componentType);
+      if (!this.componentRef) {
+        this.componentRef = container.createComponent(componentType);
+      }
 
-      if (!componentRef || !componentRef.instance) {
+      if (!this.componentRef || !this.componentRef.instance) {
         return;
       }
 
       Object.entries(config).forEach(([key, value]) => {
-        if (key in componentRef.instance) {
-          const property = (componentRef.instance as any)[key];
+        if (key in this.componentRef!.instance) {
+          const property = (this.componentRef!.instance as any)[key];
           if (property !== null && typeof property === 'object' && 'subscribe' in property && typeof value === 'function') {
             property.subscribe(value);
           } else {
-            componentRef.setInput(key, value);
+            this.componentRef!.setInput(key, value);
           }
         }
       });
